@@ -1,0 +1,96 @@
+#:kivy 1.11.1
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+ManagerScreen:
+    transition: FadeTransition()
+    MainScreen:
+    CipherScreen:
+
+<MainScreen>:
+    name: 'main'
+    space_x: self.size[0]/ 30
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+        
+        BoxLayout:
+            orientation:"vertical"
+            spacing: 20
+            padding: root.space_x, 20
+            BoxLayout:
+                size_hint_y: .4
+                Label:
+                    text: "Message :"
+                    size_hint_x: .3
+                TextInput:
+                    id: area_one
+                    multiline: True
+                    size_hint_x: .7
+                
+            BoxLayout:
+                size_hint_y: .4
+                Label:
+                    text: "Cipher Text :"
+                    size_hint_x: .3
+                TextInput:
+                    id: area_two
+                    multiline: True
+                    size_hint_x: .7
+            BoxLayout:
+                spacing: 60
+                size_hint_y: None
+                height: 50
+                Button:
+                    on_release: app.root.current = 'cipher'
+                    text: "ENCRYPT"
+                    size: [30, 20]
+        
+                Button:
+                    on_release: app.root.current = 'cipher'
+                    text: "DECRYPT"
+                    size: [30, 20]
+        
+
+<CipherScreen>:
+    name: 'cipher'
+    space_x: self.size[0]/30
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+        padding:root.space_x, 20
+        BoxLayout:
+            size_hint_y: .4
+            spacing: 20
+            Label:
+                text: 'Ceasar cipher'
+                size_hint_x: .3
+            CheckBox:
+
+            TextInput:
+                text: 'Enter text'
+                multiline: False
+                size_hint_x: .3
+            Button:
+                on_release: app.root.current = 'main'
+                text: 'OK'
+                size: 30, 30
+                size_hint_x: .2
+            
+        BoxLayout:
+            size_hint_y: .4
+            spacing: 20
+            Label:
+                text: 'Transposition cipher'
+                size_hint_x: .3
+            CheckBox:
+
+            TextInput:
+                text: 'Enter text'
+                multiline: False
+                size_hint_x: .3
+            Button:
+                on_release: app.root.current = 'main'
+                text: 'OK'
+                size: 30, 30
+                size_hint_x: .2
+            
